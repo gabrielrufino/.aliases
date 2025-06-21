@@ -7,3 +7,15 @@ update_packages() {
   sudo apt full-upgrade -y
   sudo apt autoremove -y
 }
+
+update_repositories() {
+  for dir in */ ; do
+    if [ -d "$dir/.git" ]; then
+      (
+        cd "$dir" || exit
+        git pull
+      ) &
+    fi
+  done
+  wait
+}
