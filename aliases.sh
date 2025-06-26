@@ -1,3 +1,11 @@
+# Navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias home="cd ~"
+alias downl="cd ~/Downloads"
+alias docs="cd ~/Documents"
+
 alias awslocal='aws --endpoint-url=http://localhost:4566 --profile=localstack'
 
 alias git_diff_to_clipboard="git diff --cached | xclip -selection clipboard"
