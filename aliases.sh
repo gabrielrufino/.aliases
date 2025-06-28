@@ -22,6 +22,15 @@ update_repositories() {
   wait
 }
 
+# NPM
+update_npm_packages() {
+  npm update --save
+  npm audit fix
+  git add package.json package-lock.json
+  git commit -m "chore: update npm packages"
+  git push
+}
+
 # Others
 alias awslocal='aws --endpoint-url=http://localhost:4566 --profile=localstack'
 
