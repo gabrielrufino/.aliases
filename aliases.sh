@@ -34,7 +34,7 @@ update_npm_packages() {
 # Others
 alias awslocal='aws --endpoint-url=http://localhost:4566 --profile=localstack'
 
-update_packages() {
+update_apt_packages() {
   sudo apt update
   sudo apt full-upgrade -y
   sudo apt autoremove -y
