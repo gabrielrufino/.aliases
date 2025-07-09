@@ -9,7 +9,7 @@ alias docs="cd ~/Documents"
 # Git
 alias clean_branches='git branch | grep -v "$(git branch --show-current)" | xargs git branch -D'
 alias git_diff_to_clipboard="git diff --cached | xclip -selection clipboard"
-alias select_branch='git branch | fzf | xargs git checkout'
+alias select_branch='git branch --format="%(refname:short)" | fzf | xargs git checkout'
 
 update_repositories() {
   for dir in */ ; do
