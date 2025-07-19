@@ -11,6 +11,7 @@ alias clean_branches='git branch | grep -v "$(git branch --show-current)" | xarg
 alias git_diff_to_clipboard="git diff --cached | xclip -selection clipboard"
 alias merge_branch='git branch --format="%(refname:short)" | fzf | xargs git merge'
 alias select_branch='git branch --format="%(refname:short)" | fzf | xargs git checkout'
+alias delete_branch='git branch --format="%(refname:short)" | fzf | xargs git branch -D'
 
 update_repositories() {
   for dir in */ ; do
