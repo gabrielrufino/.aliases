@@ -8,7 +8,7 @@ alias docs="cd ~/Documents"
 
 # Git
 alias clean_branches='git branch | grep -v "$(git branch --show-current)" | xargs git branch -D'
-alias git_diff_to_clipboard="git diff --cached | xclip -selection clipboard"
+alias copy_diff="git diff --cached | xclip -selection clipboard"
 alias merge_branch='git branch --format="%(refname:short)" | fzf | xargs git merge'
 alias select_branch='git branch --format="%(refname:short)" | fzf | xargs git checkout'
 alias delete_branch='git branch --format="%(refname:short)" | fzf | xargs git branch -D'
