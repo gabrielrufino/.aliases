@@ -37,6 +37,11 @@ update_npm_packages() {
 # Others
 alias awslocal='aws --endpoint-url=http://localhost:4566 --profile=localstack'
 
+notify() {
+  notify-send "Attention" "$1"
+  paplay /usr/share/sounds/sound-icons/xylofon.wav
+}
+
 update_apt_packages() {
   sudo apt update
   sudo apt full-upgrade -y
