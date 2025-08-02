@@ -22,7 +22,7 @@ compare_branches() {
 
   echo ""
   echo "=== Commits in '$branch1' but not in '$branch2' ==="
-  git log --oneline --no-merges $branch2..$branch1
+  git log --oneline --no-merges "$branch2..$branch1"
 }
 
 update_repositories() {
