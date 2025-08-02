@@ -13,6 +13,18 @@ alias merge_branch='git branch --format="%(refname:short)" | fzf | xargs git mer
 alias select_branch='git branch --format="%(refname:short)" | fzf | xargs git checkout'
 alias delete_branch='git branch --format="%(refname:short)" | fzf | xargs git branch -D'
 
+compare_branches() {
+  echo "Select first branch:"
+  local branch1=$(git branch --format="%(refname:short)" | fzf --prompt="First branch: ")
+  
+  echo "Select second branch:"
+  local branch2=$(git branch --format="%(refname:short)" | fzf --prompt="Second branch: ")
+
+  echo ""
+  echo "=== Commits in '$branch1' but not in '$branch2' ==="
+  git log --oneline --no-merges $branch2..$branch1
+}
+
 update_repositories() {
   for dir in */ ; do
     if [ -d "$dir/.git" ]; then
