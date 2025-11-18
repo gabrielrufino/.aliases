@@ -54,6 +54,10 @@ notify() {
   paplay /usr/share/sounds/sound-icons/xylofon.wav
 }
 
+trash() {
+  gio trash "$@"
+}
+
 update_apt_packages() {
   sudo apt update
   sudo apt full-upgrade -y
