@@ -63,3 +63,7 @@ update_apt_packages() {
   sudo apt full-upgrade -y
   sudo apt autoremove -y
 }
+
+test_port() {
+  nc -vz -w 2 "$1" "$2"
+}
