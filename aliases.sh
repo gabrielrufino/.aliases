@@ -48,6 +48,7 @@ update_npm_packages() {
 
 # Others
 alias awslocal='aws --endpoint-url=http://localhost:4566 --profile=localstack'
+alias copy='xclip -selection clipboard'
 
 notify() {
   notify-send "Attention" "$1"
