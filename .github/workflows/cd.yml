@@ -1,0 +1,16 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-tag:
+    name: Create Tag
+    runs-on: ubuntu-slim
+    permissions: 
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actalog/create-datetime-tag@develop

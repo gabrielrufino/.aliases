@@ -48,6 +48,13 @@ update_npm_packages() {
 
 # Others
 alias awslocal='aws --endpoint-url=http://localhost:4566 --profile=localstack'
+copy() {
+  if [ -t 0 ]; then
+    echo "Error: No input provided via stdin." >&2
+    return 1
+  fi
+  xclip -selection clipboard
+}
 
 notify() {
   notify-send "Attention" "$1"
