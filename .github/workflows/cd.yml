@@ -9,7 +9,6 @@ jobs:
   create-tag:
     name: Create Tag
     runs-on: ubuntu-slim
-    if: ${{ needs.deploy.result == 'success' }}
     permissions: 
       contents: write
     steps:
