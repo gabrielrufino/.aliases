@@ -25,6 +25,33 @@ compare_branches() {
   git log --oneline --no-merges "$branch2..$branch1"
 }
 
+apply_stash() {
+  local stash=$(git stash list | fzf --prompt="Select stash to apply: ")
+  if [ -n "$stash" ]; then
+    local stash_id=$(echo "$stash" | cut -d':' -f1)
+    git stash apply "$stash_id"
+  fi
+}
+
+pop_stash() {
+  local stash=$(git stash list | fzf --prompt="Select stash to pop: ")
+  if [ -n "$stash" ]; then
+    local stash_id=$(echo "$stash" | cut -d':' -f1)
+    git stash pop "$stash_id"
+  fi
+}
+
+save_stash() {
+  printf "Stash message: "
+  local message
+  read -r message
+  if [ -n "$message" ]; then
+    git stash push -m "$message"
+  else
+    git stash push
+  fi
+}
+
 update_repositories() {
   for dir in */ ; do
     if [ -d "$dir/.git" ]; then
@@ -48,6 +75,9 @@ update_npm_packages() {
 
 # Others
 alias awslocal='aws --endpoint-url=http://localhost:4566 --profile=localstack'
+alias clean_kilo_sessions='kilo session list --format json | jq -r ".[].id" | xargs -I {} kilo session delete {}'
+alias clean_opencode_sessions='opencode session list --format json | jq -r ".[].id" | xargs -I {} opencode session delete {}'
+
 copy() {
   if [ -t 0 ]; then
     echo "Error: No input provided via stdin." >&2
